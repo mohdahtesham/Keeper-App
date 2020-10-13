@@ -1,20 +1,19 @@
 import React from "react";
-import Notes from '../notes';
+import DeleteIcon from "@material-ui/icons/Delete";
 
-const Array = Notes;
-const AllNotes = (val) => {
-    return ( <div className="note" key={val.key}>
-    <h1>{val.title}</h1>
-<p>{val.content}</p>
-  </div>)
-   
-}
-  
+function Note(props) {
+  function handleClick() {
+    props.onDelete(props.id);
+  }
 
-function Note() {
- return  (
-   Array.map(AllNotes)
-   
+  return (
+    <div className="note">
+      <h1>{props.title}</h1>
+      <p>{props.content}</p>
+      <button onClick={handleClick}>
+        <DeleteIcon />
+      </button>
+    </div>
   );
 }
 
